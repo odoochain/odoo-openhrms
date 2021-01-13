@@ -7,7 +7,7 @@ class EmployeeTransfer(models.Model):
     _description = 'Transfer Company'
     _order = "id desc"
 
-    name = fields.Char(string='Name', copy=False, ondelete='cascade')
+    name = fields.Char(string='Name', copy=False)
     company_id = fields.Integer(string='Company', help='Company name same as res.company', copy=False)
 
 
