@@ -36,12 +36,20 @@
         </t>
     </template>
 
-    <report
-        id="action_report_broad_factor"
-        model="hr.employee.broad.factor"
-        string="Broad Factor"
-        report_type="qweb-pdf"
-        name="hrms_dashboard.report_broadfactor"
-        file="hrms_dashboard.report_broadfactor"
-        />
+<!--    <report-->
+<!--        id="action_report_broad_factor"-->
+<!--        model="hr.employee.broad.factor"-->
+<!--        string="Broad Factor"-->
+<!--        report_type="qweb-pdf"-->
+<!--        name="hrms_dashboard.report_broadfactor"-->
+<!--        file="hrms_dashboard.report_broadfactor"-->
+<!--        />-->
+    <record id="action_report_broad_factor" model="ir.actions.report">
+        <field name="name">Broad Factor</field>
+        <field name="model">hr.employee.broad.factor</field>
+        <field name="type">ir.actions.report</field>
+        <field name="report_name">hrms_dashboard.report_broadfactor</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_file">hrms_dashboard.report_broadfactor</field>
+    </record>
 </odoo>

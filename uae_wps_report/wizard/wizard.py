@@ -44,7 +44,7 @@ class Wizard(models.TransientModel):
 
     def print_xlsx(self):
         print("button clicked")
-        company = self.env['res.company']._company_default_get('wps.wizard')
+        company = self.env.company_id
         if not company.company_registry:
             raise UserError(_('Please Set Company Registry Number First'))
         users = self.env['hr.employee'].search([])
@@ -72,7 +72,7 @@ class Wizard(models.TransientModel):
         slips = self.env['wps.wizard'].get_data(self.start_date, self.end_date)
         if not slips:
             raise UserError(_('There are no payslip Created for the selected month'))
-        company = self.env['res.company']._company_default_get('wps.wizard')
+        company = self.env.company_id
         user = self.env['res.users'].browse(self.env.uid)
         if user.tz:
             tz = pytz.timezone(user.tz) or pytz.utc
@@ -175,7 +175,7 @@ where hr_payslip_line.name = 'Net Salary' and hr_payslip_line.slip_id in(""" + i
             sheet.write(count, 8, '0.0000', format0)
             sheet.write(count, 9, leaves, format0)
         count += 1
-        company = self.env['res.company']._company_default_get('wps.wizard')
+        company = self.env.company_id
         sheet.set_column(1, 1, 14)
         sheet.set_column(2, 2, 12)
         sheet.set_column(3, 3, 16)
