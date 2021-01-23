@@ -37,4 +37,4 @@ class PolicyWizard(models.TransientModel):
 
     company_id = fields.Many2one('res.company', help="Company")
     policy_info = fields.Html(related='company_id.company_info')
-    print(policy_info, 'Hi')
+    # print(policy_info, 'Hi')
