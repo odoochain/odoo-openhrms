@@ -21,13 +21,13 @@
 ###################################################################################
 {
     'name': 'Open HRMS Loan Accounting',
-    'version': '14.0.1.0.0',
+    'version': '14.0.1.0.1',
     'summary': 'Open HRMS Loan Accounting',
     'description': """
         Create accounting entries for loan requests.
         """,
     'category': 'Generic Modules/Human Resources',
-    'author': "Cybrosys Techno Solutions",
+    'author': "Cybrosys Techno Solutions,Open HRMS",
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.openhrms.com",
