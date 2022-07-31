@@ -22,12 +22,12 @@
 ###################################################################################
 {
     'name': "Open HRMS Employee Appraisal",
-    'version': '14.0.1.0.0',
+    'version': '14.0.1.0.1',
     'summary': """Roll out appraisal plans and get the best of your workforce""",
     'description': """Roll out appraisal plans and get the best of your workforce""",
     'live_test_url': 'https://www.youtube.com/watch?v=cw4Bs8-SXdY&feature=youtu.be',
     'category': 'Generic Modules/Human Resources',
-    'author': 'Cybrosys Techno Solutions',
+    'author': 'Cybrosys Techno solutions,Open HRMS',
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.openhrms.com",
