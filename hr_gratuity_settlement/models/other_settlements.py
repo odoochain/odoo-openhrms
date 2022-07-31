@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import datetime
 from odoo import fields, models, api, exceptions, _
-from odoo.exceptions import ValidationError,UserError
+from odoo.exceptions import ValidationError, UserError
+
 date_format = "%Y-%m-%d"
 
 
@@ -24,7 +25,8 @@ class OtherSettlements(models.Model):
     worked_years = fields.Integer(string="Total Work Years")
     last_month_salary = fields.Integer(string="Last Salary", required=True, default=0)
     allowance = fields.Char(string="Dearness Allowance", default=0)
-    gratuity_amount = fields.Integer(string="Gratuity Payable", required=True, default=0, readony=True, help=("Gratuity is calculated based on 							the equation Last salary * Number of years of service * 15 / 26 "))
+    gratuity_amount = fields.Integer(string="Gratuity Payable", required=True, default=0, readony=True, help=(
+        "Gratuity is calculated based on 							the equation Last salary * Number of years of service * 15 / 26 "))
 
     reason = fields.Many2one('settlement.reason', string="Settlement Reason", required="True")
     currency_id = fields.Many2one('res.currency', string='Currency', required=True,
@@ -44,13 +46,12 @@ class OtherSettlements(models.Model):
         for rec in self:
             if rec.employee_id:
                 settlement_request = self.env['other.settlements'].search([('employee_id', '=', rec.employee_id.id),
-                                                                           ('state', 'in', ['draft', 'validate', 'approve'])])
+                                                                           ('state', 'in',
+                                                                            ['draft', 'validate', 'approve'])])
                 if settlement_request:
-
                     raise ValidationError(_('A Settlement request is already processed'
-                                                ' for this employee'))
+                                            ' for this employee'))
 
-    
     def validate_function(self):
         # calculating the years of work by the employee
         worked_years = int(datetime.datetime.now().year) - int(str(self.joined_date).split('-')[0])
@@ -62,14 +63,14 @@ class OtherSettlements(models.Model):
             cr = self._cr  # find out the correct  date of last salary of  employee
             query = """select amount from hr_payslip_line psl 
                        inner join hr_payslip ps on ps.id=psl.slip_id
-                       where ps.employee_id="""+str(self.employee_id.id)+\
-                       """and ps.state='done' and psl.code='NET' 
+                       where ps.employee_id=""" + str(self.employee_id.id) + \
+                    """and ps.state='done' and psl.code='NET' 
                        order by ps.date_from desc limit 1"""
 
             cr.execute(query)
             data = cr.fetchall()
             if data:
-                 last_salary = data[0][0]
+                last_salary = data[0][0]
             else:
                 last_salary = 0
 
@@ -87,11 +88,11 @@ class OtherSettlements(models.Model):
             self.worked_years = worked_years
 
             raise exceptions.except_orm(_('Employee Working Period is less than 1 Year'),
-                                  _('Only an Employee with minimum 1 years of working, will get the Settlement advantage'))
+                                        _('Only an Employee with minimum 1 years of working, will get the Settlement advantage'))
 
     def approve_function(self):
 
-        if not self.allowance.isdigit() :
+        if not self.allowance.isdigit():
             raise ValidationError(_('Allowance value should be numeric !!'))
 
         self.write({
@@ -111,10 +112,10 @@ class OtherSettlements(models.Model):
             'state': 'draft'
         })
 
+
 class SettlementReason(models.Model):
     _name = 'settlement.reason'
     _rec_name = 'settlement_reason'
 
-
-    settlement_reason = fields.Char(string="Reason",required=True)
+    settlement_reason = fields.Char(string="Reason", required=True)
     description = fields.Text(string="Description")
