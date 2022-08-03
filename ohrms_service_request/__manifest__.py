@@ -30,7 +30,7 @@
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.openhrms.com",
-    'depends': ['base', 'hr', 'stock','oh_employee_creation_from_user','project','hr_attendance'],
+    'depends': ['base', 'hr', 'stock','project','hr_attendance'],
     'data': [
             'security/ir.model.access.csv',
              'security/security.xml',
