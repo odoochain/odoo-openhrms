@@ -5,11 +5,11 @@ Supporting Addon for Open HRMS, Managing Legal Actions
 
 Installation
 ------------
-<<<<<<< HEAD
+
 - www.odoo.com/documentation/13.0/setup/install.html
 =======
 - www.odoo.com/documentation/14.0/setup/install.html
->>>>>>> 14.0
+
 - Install our custom addon
 
 

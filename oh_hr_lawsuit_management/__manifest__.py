@@ -3,11 +3,11 @@
 #    A part of OpenHRMS Project <https://www.openhrms.com>
 #
 #    Cybrosys Technologies Pvt. Ltd.
-<<<<<<< HEAD
+
 #    Copyright (C) 2019-TODAY Cybrosys Technologies (<https://www.cybrosys.com>).
-=======
+
 #    Copyright (C) 2021-TODAY Cybrosys Technologies (<https://www.cybrosys.com>).
->>>>>>> 14.0
+
 #    Author: Jesni Banu (<https://www.cybrosys.com>)
 #
 #    This program is free software: you can modify
@@ -26,19 +26,19 @@
 ###################################################################################
 {
     'name': 'Open HRMS Legal Actions',
-<<<<<<< HEAD
+
     'version': '13.0.1.0.0',
     'summary': """Managing Legal Actions""",
     'description': 'This module manages legal actions.',
     'category': 'Generic Modules/Human Resources',
     'author': 'Cybrosys Techno Solutions',
-=======
+
     'version': '14.0.1.0.0',
     'summary': """Managing Legal Actions""",
     'description': 'This module manages legal actions.',
     'category': 'Generic Modules/Human Resources',
     'author': 'Cybrosys Techno solutions,Open HRMS',
->>>>>>> 14.0
+
     'company': 'Cybrosys Techno Solutions',
     'website': "https://www.openhrms.com",
     'depends': ['base', 'hr'],
