@@ -20,7 +20,7 @@
 #
 ###################################################################################
 {
-    'name': 'Open HRMS Loan Management',
+    'name': 'Open HRMS Loan Chain Management',
     'version': '15.0.1.1.0',
     'summary': 'Manage Loan Requests',
     'description': """
@@ -34,11 +34,11 @@
     'website': "https://www.openhrms.com",
     'depends': [
         'base',
-        'hr_payroll_community',
+        # 'hr_payroll_community',
         'hr',
         'account',
         # if enterprise
-        # 'hr_payroll',
+        'hr_payroll',
     ],
     'data': [
         'security/ir.model.access.csv',
@@ -53,5 +53,6 @@
     'installable': True,
     'auto_install': False,
     'application': False,
-    "excludes": ["ohrms_loan_chain"],
+    "excludes": ["ohrms_loan"],
+
 }

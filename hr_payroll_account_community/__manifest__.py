@@ -19,4 +19,5 @@
     'test': ['../account/test/account_minimal_test.xml'],
     'demo': ['data/hr_payroll_account_demo.xml'],
     'license': 'AGPL-3',
+    'excludes': ['hr_payroll_account',]
 }
