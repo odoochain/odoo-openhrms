@@ -62,14 +62,14 @@ class HrLawsuit(models.Model):
                                  states={'draft': [('readonly', False)]})
     hearing_date = fields.Date(string='Hearing Date',
                                help='Upcoming hearing date')
-    court_name = fields.Char(string='Court Name', track_visibility='always',
+    court_name = fields.Char(string='Court Name', tracking=True,
                              states={'won': [('readonly', True)]},
                              help='Name of the Court')
-    judge = fields.Char(string='Judge', track_visibility='always',
+    judge = fields.Char(string='Judge', tracking=True,
                         states={'won': [('readonly', True)]},
                         help='Name of the Judge')
     lawyer = fields.Many2one('res.partner', string='Lawyer',
-                             track_visibility='always',
+                             tracking=True,
                              help='Choose the contact of Layer from the contact list',
                              states={'won': [('readonly', True)]})
     party1 = fields.Many2one('res.company', string='Party 1', required=1,
@@ -95,14 +95,14 @@ class HrLawsuit(models.Model):
                              help='Enter the details of other type')
     party2_name = fields.Char(compute='set_party2', string='Name', store=True)
     case_details = fields.Html(string='Case Details', copy=False,
-                               track_visibility='always',
+                               tracking=True,
                                help='More details of the case')
     state = fields.Selection([('draft', 'Draft'),
                               ('running', 'Running'),
                               ('cancel', 'Cancelled'),
                               ('fail', 'Failed'),
                               ('won', 'Won')], string='Status',
-                             default='draft', track_visibility='always',
+                             default='draft', tracking=True,
                              copy=False,
                              help='Status')
 
