@@ -35,11 +35,11 @@ class HrResignation(models.Model):
     notice_period = fields.Char(string="Notice Period")
     state = fields.Selection(
         [('draft', 'Draft'), ('confirm', 'Confirm'), ('approved', 'Approved'), ('cancel', 'Rejected')],
-        string='Status', default='draft', track_visibility="always")
+        string='Status', default='draft', tracking=3)
     resignation_type = fields.Selection(selection=RESIGNATION_TYPE, help="Select the type of resignation: normal "
                                                                          "resignation or fired by the company")
     read_only = fields.Boolean(string="check field")
-    employee_contract = fields.Char(String="Contract")
+    employee_contract = fields.Char(string="Contract")
 
     @api.onchange('employee_id')
     @api.depends('employee_id')

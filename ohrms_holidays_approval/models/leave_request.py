@@ -26,6 +26,7 @@ from odoo.exceptions import UserError
 
 class HrLeave(models.Model):
     _inherit = 'hr.leave'
+    _description = 'Hr Leave'
 
     leave_approvals = fields.One2many('leave.validation.status',
                                       'holiday_status',
@@ -197,8 +198,8 @@ class HrLeave(models.Model):
             'name': _('Approvals'),
             'res_id': self.id,
             'target': 'current',
-            'create': False,
-            'edit': False,
+            # 'create': False,
+            # 'edit': False,
         }
         return value
 
@@ -206,6 +207,7 @@ class HrLeave(models.Model):
 class HrLeaveTypes(models.Model):
     """ Extend model to add multilevel approval """
     _inherit = 'hr.leave.type'
+    _description = 'Hr Leave Types'
 
     multi_level_validation = fields.Boolean(
         string='Multiple Level Approval',
@@ -227,6 +229,7 @@ class HrLeaveTypes(models.Model):
 class HrLeaveValidators(models.Model):
     """ Model for leave validators in Leave Types configuration """
     _name = 'hr.holidays.validators'
+    _description = 'Hr Leave Validators'
 
     hr_holiday_status = fields.Many2one('hr.leave.type')
 
@@ -239,15 +242,20 @@ class HrLeaveValidators(models.Model):
 class LeaveValidationStatus(models.Model):
     """ Model for leave validators and their status for each leave request """
     _name = 'leave.validation.status'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _description = 'Leave Validation'
 
     holiday_status = fields.Many2one('hr.leave')
 
     validating_users = fields.Many2one('res.users', string='Leave Validators',
                                        help="Leave validators",
                                        domain="[('share','=',False)]")
-    validation_status = fields.Boolean(string='Approve Status', readonly=True,
+    validation_status = fields.Boolean(string='Approve Status',
+                                       readonly=False,
+                                       store=True,
                                        default=False,
-                                       tracking=True, help="Status")
+                                       tracking=True,
+                                       help="Status")
     leave_comments = fields.Text(string='Comments', help="Comments")
 
     @api.onchange('validating_users')
